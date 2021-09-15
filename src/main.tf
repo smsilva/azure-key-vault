@@ -1,10 +1,3 @@
-data "azurerm_client_config" "current" {}
-
-locals {
-  terraform_service_principal_object_id = [data.azurerm_client_config.current.object_id]
-  administrator_objects_list            = concat(local.terraform_service_principal_object_id, var.administrators)
-}
-
 resource "random_string" "key_vault_id" {
   keepers = {
     name     = var.name

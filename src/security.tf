@@ -1,5 +1,5 @@
 resource "azurerm_key_vault_access_policy" "administrator" {
-  for_each = toset(local.administrator_objects_list)
+  for_each = toset(var.administrators)
 
   key_vault_id = azurerm_key_vault.default.id
   tenant_id    = data.azurerm_client_config.current.tenant_id

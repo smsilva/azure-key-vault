@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 variable "name" {
   type        = string
   description = "Azure Key Vault Base Name"
