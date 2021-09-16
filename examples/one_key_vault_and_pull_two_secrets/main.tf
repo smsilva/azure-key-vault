@@ -26,14 +26,14 @@ module "vault_push" {
   secrets = [
     { id = "key1", value = "super_secret_1" },
     { id = "key2", value = "super_secret_2" },
+    { id = "key3", value = "super_secret_3" },
   ]
 
   depends_on = [
     module.vault
-
   ]
 }
 
-output "secrets" {
-  value = module.vault_push
+output "secrets_id_list" {
+  value = module.vault_push.secrets_id_list
 }
