@@ -53,4 +53,8 @@ resource "azurerm_key_vault_access_policy" "administrator" {
     "Restore",
     "Set",
   ]
+
+  depends_on = [
+    azurerm_key_vault.default
+  ]
 }
