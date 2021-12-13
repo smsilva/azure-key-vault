@@ -1,21 +1,36 @@
+provider "azurerm" {
+  features {}
+}
+
+data "azurerm_client_config" "current" {}
+
+resource "random_string" "instance_id" {
+  length      = 6
+  min_lower   = 1
+  min_numeric = 2
+  lower       = true
+  special     = false
+}
+
 locals {
-  platform_instance_region = "centralus"
+  key_vault_name = "wasp-test-02-${random_string.instance_id.result}"
+  location       = "eastus2"
   administrators = [
     data.azurerm_client_config.current.object_id,
     "805a3d92-4178-4ad1-a0d6-70eae41a463a"
   ]
 }
 
-resource "azurerm_resource_group" "platform_instance" {
-  name     = var.platform_instance_name
-  location = local.platform_instance_region
+resource "azurerm_resource_group" "default" {
+  name     = local.key_vault_name
+  location = local.location
 }
 
 module "vault" {
   source = "../../src"
 
-  name           = "${var.company_name}-${var.platform_instance_name}"
-  resource_group = azurerm_resource_group.platform_instance
+  name           = local.key_vault_name
+  resource_group = azurerm_resource_group.default
   administrators = local.administrators
 }
 

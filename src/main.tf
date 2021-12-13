@@ -1,18 +1,5 @@
-resource "random_string" "key_vault_id" {
-  keepers = {
-    name     = var.name
-    location = var.resource_group.location
-  }
-
-  length      = 3
-  min_numeric = 1
-  min_lower   = 1
-  special     = false
-  upper       = false
-}
-
 resource "azurerm_key_vault" "default" {
-  name                       = "${var.name}-${random_string.key_vault_id.result}"
+  name                       = var.name
   location                   = var.resource_group.location
   resource_group_name        = var.resource_group.name
   tenant_id                  = data.azurerm_client_config.current.tenant_id

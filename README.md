@@ -18,7 +18,10 @@ while read -r AZURE_KEY_VAULT_NAME; do
     az keyvault purge -n ${AZURE_KEY_VAULT_NAME}
     echo ""
   fi
-done <<< "$(az keyvault list-deleted --resource-type vault --output tsv --query '[].name')"
+done <<< "$(az keyvault list-deleted \
+  --resource-type vault \
+  --output tsv \
+  --query '[].name')"
 ```
 
 Note: if you get the error `"(MethodNotAllowed) Operation 'DeletedVaultPurge' is not allowed."` as explained [here](https://stackoverflow.com/a/64094916/6406538):
