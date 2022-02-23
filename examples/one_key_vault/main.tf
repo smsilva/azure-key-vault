@@ -32,6 +32,10 @@ module "vault" {
   name           = local.key_vault_name
   resource_group = azurerm_resource_group.default
   administrators = local.administrators
+
+  tags = {
+    foo = "bar"
+  }
 }
 
 output "module_vault_instance" {

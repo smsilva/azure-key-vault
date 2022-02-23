@@ -6,4 +6,5 @@ resource "azurerm_key_vault" "default" {
   sku_name                   = var.sku_name
   soft_delete_retention_days = var.soft_delete_retention_days
   purge_protection_enabled   = false # Should we change this to not allow a key vault be purged before retention period
+  tags                       = var.tags
 }

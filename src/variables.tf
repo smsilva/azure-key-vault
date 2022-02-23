@@ -30,3 +30,7 @@ variable "soft_delete_retention_days" {
   description = "The number of days that items should be retained for once soft-deleted. This value can be between 7 (default) and 90 days"
   default     = 7
 }
+
+variable "tags" {
+  default = {}
+}
