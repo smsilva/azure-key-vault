@@ -1,3 +1,14 @@
+## 1.0.0 (2022-02-28)
+
+### Feat
+
+- **src/push**: Remove push feature
+- **src/security.tf**: Add Service Principal ID as an Administrator by Design
+
+### BREAKING CHANGE
+
+- A submodule for push was removed because it presented a security failure
+
 ## 0.4.0 (2022-02-23)
 
 ### Feat
