@@ -16,7 +16,6 @@ locals {
   key_vault_name = "wasp-test-04-${random_string.instance_id.result}"
   location       = "eastus2"
   administrators = [
-    data.azurerm_client_config.current.object_id,
     "805a3d92-4178-4ad1-a0d6-70eae41a463a"
   ]
 
@@ -60,7 +59,7 @@ module "permission_user" {
   source = "../../src/permission"
 
   vault     = module.vault.instance
-  object_id = "db005870-2bd8-4224-b01d-c6a4229ac209" # silvio.silva-ext3@ab-inbev.com
+  object_id = "db005870-2bd8-4224-b01d-c6a4229ac209" # user
   secret_permissions = [
     "List"
   ]

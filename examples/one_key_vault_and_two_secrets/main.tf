@@ -16,7 +16,6 @@ locals {
   key_vault_name = "wasp-test-03-${random_string.instance_id.result}"
   location       = "eastus2"
   administrators = [
-    data.azurerm_client_config.current.object_id,
     "805a3d92-4178-4ad1-a0d6-70eae41a463a"
   ]
 

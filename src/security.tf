@@ -1,5 +1,11 @@
+locals {
+  administrators = concat(
+    [data.azurerm_client_config.current.object_id], var.administrators
+  )
+}
+
 resource "azurerm_key_vault_access_policy" "administrator" {
-  for_each = toset(var.administrators)
+  for_each = toset(local.administrators)
 
   key_vault_id = azurerm_key_vault.default.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
